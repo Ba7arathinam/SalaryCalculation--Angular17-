@@ -1,0 +1,140 @@
+
+
+<body>
+    <div class="container conta row main-reg1 val">
+        <div class="col card main-reg1 bg-light ">
+            <div class="card-body ">
+                <h2 class="card-title">SALARY CALCULATION</h2>
+                <form [formGroup]="calculate" (submit)="calcul()">
+                    <div class="form-floating mb-3 ">
+                        <input type="text" class="form-control cls" id="floatingInput" placeholder="" required formControlName="empname" [ngClass]="{'error-input': calculate.get('empname').invalid && (calculate.get('empname').dirty || calculate.get('empname').touched)}">
+                        <label for="floatingInput">Employee Name</label>
+                        <!-- <span 
+                    *ngIf="calculate.get('empname').invalid && (calculate.get('empname').dirty || calculate.get('empname').touched)">
+                    <span *ngIf="calculate.get('empname').errors.required">Employee name is required.</span>
+                    <span *ngIf="calculate.get('empname').errors.pattern">Invalid employee name format.</span>
+                </span> -->
+                <span *ngIf="calculate.controls['empname'].touched && calculate.controls['empname'].hasError('required')">
+                  Please enter a name.
+                </span>
+                <span *ngIf="calculate.controls['empname'].touched && calculate.controls['empname'].hasError('pattern')">
+                  Invalid employee name format.
+                </span>
+                    </div>
+                   
+                    <div class="form-floating mb-3">
+                        <select class="form-select cls" id="floatingSelect1" aria-label="Floating label select example" required formControlName="wagetype"  [ngClass]="{'error-input': calculate.get('wagetype').invalid && (calculate.get('wagetype').dirty || calculate.get('wagetype').touched)}" >
+                            <option class="opt" selected disabled>Select</option>
+                            <option *ngFor="let i of wageTypeArray" [value]="i">{{i}}</option>
+                        </select>
+                        <label for="floatingSelect">Wage Type</label>
+                        <!-- <span
+                            *ngIf="calculate.get('wagetype').invalid && (calculate.get('wagetype').dirty || calculate.get('wagetype').touched)">
+                            <span *ngIf="calculate.get('wagetype').errors.required">Wage Type is required.</span>
+                        </span> -->
+                        <span *ngIf="calculate.controls['wagetype'].touched && calculate.controls['wagetype'].hasError('required')">
+                          Wage Type is required.
+                        </span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="texy" class="form-control cls" id="floatingSalary" placeholder="" required formControlName="salaryAmt"  [ngClass]="{'error-input': calculate.get('salaryAmt').invalid && (calculate.get('salaryAmt').dirty || calculate.get('salaryAmt').touched)}">
+                        <label for="floatingPassword">Salary Amount</label>
+                        
+                            <span *ngIf="calculate.controls['salaryAmt'].touched && calculate.controls['salaryAmt'].hasError('required')">Salary amount is required.</span>
+                            <span *ngIf="calculate.controls['salaryAmt'].touched && calculate.controls['salaryAmt'].hasError('pattern')">Salary amount must below 100000
+                            </span>
+                       
+                    </div>
+                    <div class="form-floating mb-3">
+                        <select class="form-select cls" id="floatingSelect2" aria-label="Floating label select example" required formControlName="hoursInADay" [ngClass]="{'error-input': calculate.get('hoursInADay').invalid && (calculate.get('hoursInADay').dirty || calculate.get('hoursInADay').touched)}">
+                            <option selected disabled>Select</option>
+                            <option *ngFor="let hours of hoursInADayArray" [value]="hours">{{hours}}</option>
+                        </select>
+                        <label for="floatingSelect">Working Hours in a Day</label>
+                        <span *ngIf="calculate.controls['hoursInADay'].touched && calculate.controls['hoursInADay'].hasError('required')">
+                          Working Hours is required.
+                        </span>
+                        <!-- <span
+                            *ngIf="calculate.get('hoursInADay').invalid && (calculate.get('hoursInADay').dirty || calculate.get('hoursInADay').touched)">
+                            <span *ngIf="calculate.get('hoursInADay').errors.required">Working Hours is required.</span>
+                        </span> -->
+                    </div>
+                    <div class="form-floating mb-3">
+                        <select class="form-select cls" id="floatingSelect3" aria-label="Floating label select example" required formControlName="daysInAWeek"  [ngClass]="{'error-input': calculate.get('daysInAWeek').invalid && (calculate.get('daysInAWeek').dirty || calculate.get('daysInAWeek').touched)}">
+                            <option selected disabled>Select</option>
+                            <option *ngFor="let day1 of daysInAWeekArray" [value]="day1">{{day1}}</option>
+
+                        </select>
+                        <label for="floatingSelect">Working Days in a Week</label>
+                        <!-- <span
+                            *ngIf="calculate.get('daysInAWeek').invalid && (calculate.get('daysInAWeek').dirty || calculate.get('daysInAWeek').touched)">
+                            <span *ngIf="calculate.get('daysInAWeek').errors.required">Working Days in a Week</span>
+                        </span> -->
+                        <span *ngIf="calculate.controls['daysInAWeek'].touched && calculate.controls['daysInAWeek'].hasError('required')">
+                          Working Days in a Week
+                        </span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <select class="form-select cls" id="floatingSelect4" aria-label="Floating label select example" required formControlName="daysInAMonth"  [ngClass]="{'error-input': calculate.get('daysInAMonth').invalid && (calculate.get('daysInAMonth').dirty || calculate.get('daysInAMonth').touched)}">
+                            <option selected disabled>Select</option>
+                            <option *ngFor="let days of daysInAMonthArray" [value]="days">{{days}}</option>
+
+                        </select>
+                        <label for="floatingSelect">Working Days in a Month</label>
+                        <!-- <span
+                            *ngIf="calculate.get('daysInAMonth').invalid && (calculate.get('daysInAMonth').dirty || calculate.get('daysInAMonth').touched)">
+                            <span *ngIf="calculate.get('daysInAMonth').errors.required">Working Days in a Month</span>
+                        </span> -->
+                        <span *ngIf="calculate.controls['daysInAMonth'].touched && calculate.controls['daysInAMonth'].hasError('required')">
+                          Working Days in a Month
+                        </span>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button class="btn" type="submit" id="calcu" [disabled]="!calculate.valid">Calculate</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row main-reg">
+            <div class="container card bg-light contain1">
+                <dl class="row sal-over">
+                    <h2 class="card-title">SALARY DETAILS </h2>
+                    <h3 id="ename" style="font-size: xx-large;">{{ename}}</h3>
+                    <table class="">
+                        <tr>
+                            <th scope="col" class="col-8">Employee ID</th>
+                            <th scope="col" id="empid">{{empid}}</th>
+                        </tr>
+                        <tr>
+                            <td>Hourly Salary</td>
+                            <td>{{salaryForHour|currency:'INR'}}</td>
+                        </tr>
+                        <tr>
+                            <td>Daily Salary</td>
+                            <td>{{salaryForDay|currency:'INR'}}</td>
+                        </tr>
+                        <tr>
+                            <td>Weekly Salary</td>
+                            <td>{{salaryForWeek|currency:'INR'}}</td>
+                        </tr>
+                        <tr>
+                            <td>Monthly Salary</td>
+                            <td>{{salaryForMonth|currency:'INR'}}</td>
+                        </tr>
+                        <tr>
+                            <td>Quarterly Salary</td>
+                            <td>{{salaryForQuater|currency:'INR'}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="font-size: xx-large;"><br> <b>Annual Salary</b><br>
+                               <h2> {{salaryForAnnual|currency:'INR'}}</h2></td>
+                        </tr>
+                    </table>
+                </dl>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+

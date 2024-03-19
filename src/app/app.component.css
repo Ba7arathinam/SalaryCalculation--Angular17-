@@ -1,0 +1,55 @@
+.main-reg1{
+  padding: 6%;
+
+}
+.main-reg{
+  margin: 3%;
+}
+.val{
+  margin-left: 8%;
+}
+h2 {
+  text-align: center;
+  color: rgb(139, 36, 235);
+  font-weight: 650;
+}
+
+.btn {
+  background-color: rgb(128, 8, 240);
+  color: rgb(254, 253, 253);
+  font-size: larger;
+  width: 25%;
+  margin: 5px;
+  border: none;
+}
+.btn:hover{
+  background-color: blueviolet;
+  font-size: x-large;
+  width: 28%;
+height: auto;
+  font-weight: 500;
+
+}
+.sal-over{
+  padding: 5%;
+
+}
+
+.contain1{
+  margin-left: 0%;;
+}
+span{
+  margin: 0%;
+  padding: 0%;
+  color:brown;
+  font-weight: 600;
+}
+h3{
+  text-align: center;
+  font-weight: 700;
+}
+
+option{
+  background-color: rgba(169, 8, 249, 0.5);
+  color: black;
+}
